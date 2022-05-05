@@ -1,12 +1,13 @@
 class flat_iterator_adv:
 
 
-    def __init__(self, nested_list):
+    def __init__(self, nested_list, recu=True):
         self.flat_list = []
-        self.flat_req(nested_list)
-        self.lst = nested_list
-        self.flat_list = []
-        self.flat_bubble()
+        if recu:
+            self.flat_req(nested_list)
+        else:
+            self.lst = nested_list
+            self.flat_bubble()
 
     def flat_req(self, lst):
         for item in lst:
@@ -51,5 +52,5 @@ if __name__ == '__main__':
     for item in flat_iterator_adv(nested_list):
         print(item)
 
-    flat_list = [item for item in flat_iterator_adv(nested_list)]
+    flat_list = [item for item in flat_iterator_adv(nested_list, False)]
     print(flat_list)
